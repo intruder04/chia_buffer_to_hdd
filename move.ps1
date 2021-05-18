@@ -2,11 +2,12 @@
 ## needs administrator privileges
 ## v0.6
 
+# set your paths here
 $bfr_folder = 'D:\Crypto\Chia\PlotsBuffer' # SSD buffer folder
 $farm_hdd_destinations = @('K:\Plots','L:\Plots','I:\Plots') # DestinationFarming folders
 
 $global:hdd_current_index = 0; # start with the first path in $farm_hdd_destinations
-$farm_hdd_destinations_count = $farm_hdd_destinations.count
+$check_interval = 30 # in seconds
 
 function CheckEnoughSpace {
 	Param(
@@ -28,7 +29,7 @@ function CheckEnoughSpace {
 }
 
 function RotateFarmDest ([REF]$cur_index) {
-	if ($cur_index.Value -ne $farm_hdd_destinations_count - 1) {
+	if ($cur_index.Value -ne $farm_hdd_destinations.count - 1) {
 		$cur_index.Value = $cur_index.Value + 1
 	} else {
 		$cur_index.Value = 0
@@ -37,9 +38,7 @@ function RotateFarmDest ([REF]$cur_index) {
 }
 
 while ($true)
-{   
-    $check_interval = 30 # in seconds
-	
+{
     $chia_running = ((get-process -Name chia).path | findstr unpacked).count
     $current_time = (Get-Date -f HH:mm)
     $current_date_time = (Get-Date -f MM-dd-HH:mm:ss)
