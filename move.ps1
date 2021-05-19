@@ -20,7 +20,7 @@ function CheckEnoughSpace {
             Select-Object -First 1 FreeSpace |
             ForEach-Object { $_.FreeSpace / (1024*1024) }
 	
-	if ([int]$free -lt 110) {
+	if ([int]$free -lt 110000) {
 		Write-Host WARNING! Path $path has [int]$free free
 		return $false
 	}
