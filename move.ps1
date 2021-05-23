@@ -52,7 +52,6 @@ while ($true)
 			robocopy $bfr_folder $farm_hdd_destinations[$global:hdd_current_index] /MOV /XX *.plot
 		} else {
 			Write-Host Not enough space on $farm_hdd_destinations[$global:hdd_current_index]. Moving to the next one
-			RotateFarmDest ([REF]$global:hdd_current_index)
 		}
 		RotateFarmDest ([REF]$global:hdd_current_index)
     }
