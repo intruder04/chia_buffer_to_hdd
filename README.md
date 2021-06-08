@@ -1,11 +1,11 @@
 # chia_buffer_to_hdd
-## A PowerShell script to copy Chia plots from a buffer disk to several HDDs.
+## A PowerShell script to copy Chia plots from a buffer disk to several HDDs consecutively.
 
 Admin privileges are required. To allow script execution:
 
 `Set-ExecutionPolicy RemoteSigned`
 
-`$bfr_folder` contains your buffer path.
+`$bfr_folder` contains your buffer path - this is the final directory for your plots.
 
 HDD destinations are defined as an array:
 
